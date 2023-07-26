@@ -1,0 +1,1968 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Compiled and minified CSS -->
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet'>	
+	<style>
+
+#scrolly2 {
+        position: relative;
+        padding: 1rem;
+      }
+
+      .scrolly-overlay {
+        position: relative;
+        padding: 0;
+        max-width: 35rem;
+        margin: 0 auto;
+      }
+
+      .sticky-thing {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        z-index: 0;
+        top: 0;
+        height: 90vh;
+        /* Center everything inside */
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .step {
+        margin: 0 auto 2rem auto;
+        margin-bottom: 35rem;
+        background-color: #eee;
+        background-color: #fff;
+        color: black;
+      }
+
+      .step p {
+        text-align: center;
+        padding: 1rem;
+        font-size: 1.25rem;
+      }
+
+      .hidden { visibility: hidden; }
+
+      /* When it's less than 700 pixels wide, do normal scrollytelling */
+      @media only screen and (min-width: 700px) {
+        #scrolly2.side-by-side {
+          display: flex;
+        }
+
+        #scrolly2.side-by-side > div {
+          flex-basis: 0;
+          flex-grow: 1;
+          flex-shrink: 1;
+          padding: 0.75em;
+        }
+
+        #scrolly2.side-by-side .scrolly-overlay {
+          margin-top: 70vh;
+          order: 0;
+          /* Change these to adjust sizing options */
+          min-width: 15rem;
+          max-width: 20rem;
+        }
+
+        #scrolly2.side-by-side .sticky-thing {
+          order: 1;
+          flex-grow: 2;
+        }
+      }	
+	/*for body text font*/
+        body {
+            margin: auto;
+            padding: 50px 10px;
+            font-family: 'Roboto Mono';font-size: 21px;
+        }
+
+	/*for headline text font*/
+        .header {
+            padding-top: 20px;
+            padding-bottom: 20px;
+			margin: auto;
+            max-width: 800px;
+			font-family: 'Roboto Mono';font-size: 35px;
+			
+        }
+
+        .story-body,
+        
+        .footer {
+            margin: auto;
+            max-width: 600px;
+        }
+
+		.ai2HTML-graph {
+            margin: auto;
+            max-width: 800px;
+        }
+
+
+        .footer {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+
+
+		.center {
+  			display: block;
+		  margin-left: auto;
+  			margin-right: auto;
+ 			 width: 50%;
+		}
+        /* text styles */
+
+        /* https://cssgenerator.org/text-shadow-css-generator.html */
+        /* #shadow {
+            text-shadow: 3px 4px 2px rgba(233, 105, 105, 0.6);
+        } */
+
+
+        p.kicker {
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+      /*  h1.headline {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 0.25rem;
+            margin-top: 1rem;
+            font-weight: 800;
+			font-family: 'Roboto Mono';
+        }
+
+        h2.subhead {
+            font-size: 1.4rem;
+            line-height: 2rem;
+            margin-bottom: 0;
+            margin-top: 15px;
+            font-weight: 400;
+
+			
+        }
+
+        p.body-text {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        h3.section-head {
+            font-size: 2rem;
+            margin: 40px 0 10px 0;
+            font-weight: 700;
+            line-height: 1.3;
+        }*/
+
+		/* for byline */
+        .byline {
+            font-size: 1.3rem;
+            line-height: 0.75;
+            margin-top: 1.5rem;
+            font-weight: 500;
+        }
+		/* for byline */
+        .date {
+            font-size: 0.85rem;
+            line-height: 1;
+            margin-top: 10px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+
+        p.note {
+            font-size: 0.85rem;
+        }
+
+        /* chart styles */
+
+        .chart-section {
+            width: 100%;
+            max-width: 1600px;
+            padding: 20px 0px;
+        }
+
+        .story-body .chart-section {
+            padding-top: 0px;
+        }
+
+
+        .chart-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        p.chart-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            max-width: 700px;
+            margin: 0px auto 5px auto;
+        }
+
+        p.chart-subhead {
+            margin: 0 auto;
+            max-width: 700px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        p.chart-label {
+            margin: 0 0 5px 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .chart-row .chart {
+            width: 100%;
+            padding-right: 15px;
+            min-width: calc(25% - 15px);
+
+        }
+
+
+		div {
+  		text-align: justify;
+ 		 text-justify: inter-word;
+		}
+        p.chart-source {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+
+
+
+
+        /* photos */
+
+        .photo-section {
+            padding: 30px 0px;
+            width: 100%;
+            margin: auto;
+            display: flex;
+            max-width: 1000px;
+        }
+
+        .photo {
+            width: 100%;
+            padding-right: 15px;
+        }
+
+        .photo img {
+            width: 100%;
+        }
+
+        p.caption {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* mobile */
+        @media (max-width:700px) {
+
+            .chart-row {
+                display: block;
+            }
+
+            .chart-row .chart {
+                padding: 0;
+            }
+
+            .photo-section {
+                display: block;
+            }
+
+            .photo {
+                padding: 0;
+            }
+
+        }
+    </style>
+    
+
+    <title>Climate questions</title>
+	<style>
+		#scrolly {
+		  position: relative;
+		  padding: 1rem;
+		}
+  
+		.scrolly-overlay {
+		  position: relative;
+		  padding: 0;
+		  max-width: 35rem;
+		  margin: 0 auto;
+		}
+  
+		.sticky-thing {
+		  position: -webkit-sticky;
+		  position: sticky;
+		  left: 0;
+		  width: 100%;
+		  margin: 0;
+		  z-index: 0;
+		  top: 0;
+		  height: 100vh;
+		  /* Center everything inside */
+		  display: flex;
+		  justify-content: center;
+		  flex-direction: column;
+		  justify-content: center;
+		}
+  
+		.step {
+		  margin: 0 auto 2rem auto;
+		  margin-bottom: 35rem;
+		  background-color: #eee;
+		  background-color: #fff;
+		  color: black;
+		}
+  
+		.step p {
+		  text-align: center;
+		  padding: 1rem;
+		  font-size: 1rem;
+		}
+  
+		.hidden { visibility: hidden; }
+  
+		/* When it's less than 700 pixels wide, do normal scrollytelling */
+		@media only screen and (min-width: 700px) {
+		  #scrolly.side-by-side {
+			display: flex;
+		  }
+  
+		  #scrolly.side-by-side > div {
+			flex-basis: 0;
+			flex-grow: 1;
+			flex-shrink: 1;
+			padding: 0.75em;
+		  }
+  
+		  #scrolly.side-by-side .scrolly-overlay {
+			margin-top: 70vh;
+			order: 0;
+			/* Change these to adjust sizing options */
+			min-width: 15rem;
+			max-width: 20rem;
+		  }
+  
+		  #scrolly.side-by-side .sticky-thing {
+			order: 1;
+			flex-grow: 2;
+		  }
+		}
+	  </style>
+	  <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+
+
+</head>
+
+<body>
+    <!-- all of the content on your html page goes inside the body -->
+		<section class="header">
+        <p class="kicker">climate change</p>
+       <h1 class="headline "> Little to debate</h1>
+        <h5 class="subhead">Indian Parliamentarians asked over 100,000 quesions to the government in the past 10 years. Only handful of them were on climate. </h5>
+        <p target="byline" class="byline" href="https://www.linkedin.com/in/rajit-sengupta/" >Rajit Sengupta</p>
+        <p class="date">Published July 11, 2023</p>
+    </section>
+
+	<section class="photo-section">
+		<img src="climate-change.jpg" class="img-fluid" class="text-center" alt="Climate">
+	</section>
+	<div>
+	<section class="story-body">
+		<br><br>
+
+        <p>As an environmental data journalist, I have been tracking the occurrences of extreme weather events in India for some time now, and this constant engagement has brought me face-to-face with many issues that surround the discussion about climate change in my country. <p>
+
+        <p>One of the most important parameters for gauging the importance of any issue in the public and political imagination is the discussion that any issue generates in Parliament. </p>
+		
+		<p>The success of my data stories has often been gauged by the number of questions they generate in the Indian Parliamentary debates.  </p>
+		
+		<p>This is the reason why this project is based on a survey of the number of times environment-related questions have been asked in the Indian parliament in the last decade. </p>
+		
+		<p>In the first hour of a sitting session of the Lok Sabha, the elected house of Parliament, elected members can raise questions about any aspect of government, and the concerned Minister is obliged to answer to the Parliament. It is an opportunity for Parliamentarians to hold the government accountable and to ensure transparency and accountability in governance. </p>
+
+    </section>
+	
+
+
+	<section id="scrolly">
+        <div class="sticky-thing">
+          <div class="ai2html-container">
+			<div class="chart-section">
+
+
+<!-- Generated by ai2html v0.111.0 - 2023-07-25 11:58 -->
+<!-- ai file: Question-type.ai -->
+<style media="screen,print">
+	#g-Question-type-box ,
+	#g-Question-type-box .g-artboard {
+		margin:0 auto;
+	}
+	#g-Question-type-box p {
+		margin:0;
+	}
+	#g-Question-type-box .g-aiAbs {
+		position:absolute;
+	}
+	#g-Question-type-box .g-aiImg {
+		position:absolute;
+		top:0;
+		display:block;
+		width:100% !important;
+	}
+	#g-Question-type-box .g-aiSymbol {
+		position: absolute;
+		box-sizing: border-box;
+	}
+	#g-Question-type-box .g-aiPointText p { white-space: nowrap; }
+	#g-Question-type-Artboard_3 {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-Question-type-Artboard_3 p {
+		font-family:Roboto Mono;
+		font-weight:700;
+		line-height:14px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:12px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-Question-type-Artboard_3 .g-pstyle0 {
+		line-height:25px;
+		font-size:27px;
+		text-align:center;
+		color:rgb(63,60,60);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle1 {
+		line-height:21px;
+		font-size:21px;
+		text-align:center;
+		color:rgb(237,235,235);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle2 {
+		font-weight:400;
+		line-height:13px;
+		font-size:13px;
+		text-align:center;
+		color:rgb(63,60,60);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle3 {
+		line-height:16px;
+		height:16px;
+		font-size:13px;
+		text-align:center;
+		color:rgb(252,252,252);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle4 {
+		line-height:30px;
+		height:30px;
+		font-size:25px;
+		text-align:center;
+		color:rgb(63,60,60);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle5 {
+		height:14px;
+		text-align:center;
+	}
+	#g-Question-type-Artboard_3 .g-pstyle6 {
+		line-height:22px;
+		height:22px;
+		font-size:18px;
+		text-align:center;
+		color:rgb(144,207,251);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle7 {
+		line-height:22px;
+		height:22px;
+		font-size:18px;
+		text-align:center;
+		color:rgb(102,221,212);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle8 {
+		line-height:22px;
+		height:22px;
+		font-size:18px;
+		text-align:center;
+		color:rgb(31,119,180);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle9 {
+		line-height:22px;
+		height:22px;
+		font-size:18px;
+		text-align:center;
+		color:rgb(40,165,249);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle10 {
+		line-height:22px;
+		font-size:18px;
+		text-align:center;
+		color:rgb(40,75,185);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle11 {
+		text-align:center;
+	}
+	#g-Question-type-Artboard_3 .g-pstyle12 {
+		line-height:22px;
+		height:22px;
+		font-size:18px;
+		text-align:center;
+		color:rgb(90,191,188);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle13 {
+		line-height:22px;
+		height:22px;
+		font-size:18px;
+		text-align:center;
+		color:rgb(102,170,174);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle14 {
+		line-height:22px;
+		height:22px;
+		font-size:18px;
+		text-align:center;
+		color:rgb(27,108,113);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle15 {
+		line-height:22px;
+		height:22px;
+		font-size:18px;
+		text-align:center;
+		color:rgb(52,136,140);
+	}
+	#g-Question-type-Artboard_3 .g-pstyle16 {
+		font-family:arial,helvetica,sans-serif;
+		line-height:12px;
+		font-size:10px;
+		text-align:right;
+	}
+	#g-Question-type-Artboard_4 {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-Question-type-Artboard_4 p {
+		font-family:Roboto Mono;
+		font-weight:700;
+		line-height:12px;
+		height:auto;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:10px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		position:static;
+	}
+	#g-Question-type-Artboard_4 .g-pstyle0 {
+		line-height:30px;
+		height:30px;
+		font-size:25px;
+		text-align:center;
+		color:rgb(63,60,60);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle1 {
+		height:12px;
+		text-align:center;
+	}
+	#g-Question-type-Artboard_4 .g-pstyle2 {
+		line-height:15px;
+		height:15px;
+		font-size:12px;
+		text-align:center;
+		color:rgb(27,108,113);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle3 {
+		line-height:10px;
+		height:10px;
+		font-size:8px;
+		text-align:center;
+	}
+	#g-Question-type-Artboard_4 .g-pstyle4 {
+		line-height:15px;
+		height:15px;
+		font-size:12px;
+		text-align:center;
+		color:rgb(52,136,140);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle5 {
+		line-height:15px;
+		height:15px;
+		font-size:12px;
+		text-align:center;
+		color:rgb(102,170,174);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle6 {
+		line-height:25px;
+		font-size:21px;
+		text-align:right;
+		color:rgb(63,60,60);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle7 {
+		font-weight:400;
+		line-height:21px;
+		font-size:12px;
+		text-align:right;
+		color:rgb(63,60,60);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle8 {
+		font-weight:400;
+		line-height:18px;
+		font-size:12px;
+		text-align:right;
+		color:rgb(63,60,60);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle9 {
+		line-height:15px;
+		height:15px;
+		font-size:12px;
+		text-align:center;
+		color:rgb(90,191,188);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle10 {
+		line-height:20px;
+		font-size:17px;
+		text-align:center;
+		color:rgb(252,252,252);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle11 {
+		height:12px;
+		text-align:center;
+		color:rgb(252,252,252);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle12 {
+		line-height:15px;
+		height:15px;
+		font-size:12px;
+		text-align:center;
+		color:rgb(102,221,212);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle13 {
+		line-height:15px;
+		height:15px;
+		font-size:12px;
+		text-align:center;
+		color:rgb(40,165,249);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle14 {
+		line-height:15px;
+		height:15px;
+		font-size:12px;
+		text-align:center;
+		color:rgb(144,207,251);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle15 {
+		line-height:15px;
+		height:15px;
+		font-size:12px;
+		text-align:center;
+		color:rgb(31,119,180);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle16 {
+		line-height:15px;
+		height:15px;
+		font-size:12px;
+		text-align:center;
+		color:rgb(40,75,185);
+	}
+	#g-Question-type-Artboard_4 .g-pstyle17 {
+		font-weight:400;
+		font-size:9px;
+		text-align:right;
+	}
+
+</style>
+
+<div id="g-Question-type-box" class="ai2html">
+
+	<!-- Artboard: Artboard_3 -->
+	<div id="g-Question-type-Artboard_3" class="g-artboard" style="width:780px; height:489.985589849208px;" data-aspect-ratio="1.592" data-min-width="780">
+<div style=""></div>
+		<img id="g-Question-type-Artboard_3-img" class="g-Question-type-Artboard_3-img g-aiImg" alt="" src="Question-type-Artboard_3.png"/>
+<!-- Generator: Adobe Illustrator 27.7.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg class="g-Question-type-Artboard_3-interactions-img g-aiImg" version="1.2" baseProfile="tiny" id="g-Question-type-Artboard_3-interactions-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 780 489.986" overflow="visible" xml:space="preserve">
+<g>
+	<path id="S-Path-18" data-name="S-Path-18" fill="none" stroke="#CCCCCC" d="M249.807,184.21
+		c0,94.894,470.346,94.894,470.346,189.789"/>
+	<path id="S-Path-17" data-name="S-Path-17" fill="none" stroke="#CCCCCC" d="M249.807,184.21
+		c0,94.894,386.539,94.894,386.539,189.789"/>
+	<path id="S-Path-16" data-name="S-Path-16" fill="none" stroke="#CCCCCC" d="M249.807,184.21
+		c0,94.894,302.732,94.894,302.732,189.789"/>
+	<path id="S-Path-15" data-name="S-Path-15" fill="none" stroke="#CCCCCC" d="M249.807,184.21
+		c0,94.894,218.926,94.894,218.926,189.789"/>
+	<path id="S-Path-14" data-name="S-Path-14" fill="none" stroke="#CCCCCC" d="M249.807,184.209
+		c0,94.894,135.118,94.894,135.118,189.789"/>
+	<path id="S-Path-13" data-name="S-Path-13" fill="none" stroke="#CCCCCC" d="M249.807,184.21
+		c0,94.894,51.311,94.894,51.311,189.789"/>
+	<path id="S-Path-12" data-name="S-Path-12" fill="none" stroke="#CCCCCC" d="M249.807,184.21
+		c0,94.894-32.456,94.894-32.456,189.789"/>
+	<path id="S-Path-11" data-name="S-Path-11" fill="none" stroke="#CCCCCC" d="M249.807,184.21
+		c0,94.894-116.303,94.894-116.303,189.789"/>
+	<path id="S-Path-10" data-name="S-Path-10" fill="none" stroke="#CCCCCC" d="M249.807,184.21
+		c0,94.894-200.11,94.894-200.11,189.789"/>
+	
+		<circle id="S-circle-17" data-name="S-circle-17" fill="#1B6C71" cx="720.153" cy="388.308" r="5.323"/>
+	
+		<circle id="S-circle-16" data-name="S-circle-16" fill="#34888C" cx="636.346" cy="387.639" r="4.654"/>
+	
+		<circle id="S-circle-15" data-name="S-circle-15" fill="#66AAAE" cx="552.539" cy="387.454" r="4.469"/>
+	
+		<circle id="S-circle-14" data-name="S-circle-14" fill="#5ABFBC" cx="468.732" cy="387.169" r="4.184"/>
+	
+		<circle id="S-circle-13" data-name="S-circle-13" fill="#85E5E0" cx="384.925" cy="386.852" r="3.867"/>
+	
+		<circle id="S-circle-12" data-name="S-circle-12" fill="#28A5F9" cx="301.118" cy="386.388" r="3.403"/>
+	
+		<circle id="S-circle-11" data-name="S-circle-11" fill="#1F77B4" cx="133.504" cy="385.539" r="2.554"/>
+	
+		<ellipse id="S-circle-10" data-name="S-circle-10" fill="#284BB9" cx="49.697" cy="384.908" rx="2.592" ry="1.923"/>
+	
+		<circle id="S-circle-18" data-name="S-circle-18" fill="#90CFFB" cx="217.311" cy="386.295" r="3.31"/>
+	<path id="H-Path-2" data-name="H-Path-2" fill="none" stroke="#CCCCCC" d="M520.324,76.411
+		c0,20.556,139.264,20.556,139.264,41.112"/>
+	<path id="H-Path-1" data-name="H-Path-1" fill="none" stroke="#CCCCCC" d="M389.841,73
+		c0,24.015-139.544,24.015-139.544,48.031"/>
+	
+		<circle id="H-circle-1" data-name="H-circle-1" fill="#1F77B4" cx="245.409" cy="190.243" r="11.657"/>
+</g>
+<style>
+#g-Question-type-Artboard_3-interactions-img rect, #g-Question-type-Artboard_3-interactions-img circle, #g-Question-type-Artboard_3-interactions-img path, #g-Question-type-Artboard_3-interactions-img line, #g-Question-type-Artboard_3-interactions-img polyline, #g-Question-type-Artboard_3-interactions-img polygon { vector-effect: non-scaling-stroke; }
+</style>
+</svg>
+
+		<div id="g-ai0-1" class="g-Layer_1 g-aiAbs" style="top:2.8572%;left:25.1267%;margin-left:-21.7308%;width:43.4615%;">
+			<p class="g-pstyle0">Not enough questions</p>
+		</div>
+		<div id="g-ai0-2" class="g-Layer_1 g-aiAbs" style="top:7.5512%;left:58.3259%;margin-left:-5.8974%;width:11.7949%;">
+			<p class="g-pstyle1">133,023</p>
+		</div>
+		<div id="g-ai0-3" class="g-Layer_1 g-aiAbs" style="top:9.7962%;left:25.9859%;margin-left:-22.1795%;width:44.359%;">
+			<p class="g-pstyle2">Only 3.5% of questions raised by legislators in the Lower House of Parliament in the past 10 years revolved around climate change</p>
+		</div>
+		<div id="g-ai0-4" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:18.8213%;margin-top:-32.2px;left:58.3918%;margin-left:-54px;width:108px;">
+			<p class="g-pstyle3">Questitons </p>
+			<p class="g-pstyle3">raised in </p>
+			<p class="g-pstyle3">Parliament</p>
+			<p class="g-pstyle3">(2014-2023)</p>
+		</div>
+		<div id="H-text-1" class="g-interactions g-aiAbs g-aiPointText" style="top:30.0456%;margin-top:-29.2px;left:31.4456%;margin-left:-212.5px;width:425px;">
+			<p class="g-pstyle4">4,354</p>
+			<p class="g-pstyle5">Questions Indian legislators asked to the </p>
+			<p class="g-pstyle5">Union Ministry of Environment, Forest and Climate Change</p>
+		</div>
+		<div id="H-text-3" class="g-interactions g-aiAbs g-aiPointText" style="top:30.4538%;margin-top:-29.2px;left:83.3614%;margin-left:-137px;width:274px;">
+			<p class="g-pstyle4">128,669</p>
+			<p class="g-pstyle5">Questions Indian legislators asked </p>
+			<p class="g-pstyle5">to other Union ministries</p>
+		</div>
+		<div id="S-text-12" class="g-interactions g-aiAbs g-aiPointText" style="top:85.2118%;margin-top:-18.5px;left:27.7342%;margin-left:-29px;width:58px;">
+			<p class="g-pstyle6">351</p>
+			<p class="g-pstyle5">Waste</p>
+		</div>
+		<div id="S-text-14" class="g-interactions g-aiAbs g-aiPointText" style="top:86.6811%;margin-top:-25.7px;left:48.598%;margin-left:-40px;width:80px;">
+			<p class="g-pstyle7">479</p>
+			<p class="g-pstyle5">Climate </p>
+			<p class="g-pstyle5">impact</p>
+		</div>
+		<div id="S-text-11" class="g-interactions g-aiAbs g-aiPointText" style="top:86.6811%;margin-top:-25.7px;left:17.7236%;margin-left:-61.5px;width:123px;">
+			<p class="g-pstyle8">209</p>
+			<p class="g-pstyle5">Environmental </p>
+			<p class="g-pstyle5">clearances</p>
+		</div>
+		<div id="S-text-13" class="g-interactions g-aiAbs g-aiPointText" style="top:85.4159%;margin-top:-18.5px;left:37.9344%;margin-left:-32.5px;width:65px;">
+			<p class="g-pstyle9">371</p>
+			<p class="g-pstyle5">Others</p>
+		</div>
+		<div id="S-text-10" class="g-interactions g-aiAbs" style="top:82.0432%;left:6.6842%;margin-left:-5.8974%;width:11.7949%;">
+			<p class="g-pstyle10">141</p>
+			<p class="g-pstyle11">Crimes</p>
+		</div>
+		<div id="S-text-15" class="g-interactions g-aiAbs g-aiPointText" style="top:85.4159%;margin-top:-18.5px;left:59.9613%;margin-left:-54px;width:108px;">
+			<p class="g-pstyle12">561</p>
+			<p class="g-pstyle5">Conservation</p>
+		</div>
+		<div id="S-text-16" class="g-interactions g-aiAbs g-aiPointText" style="top:87.0893%;margin-top:-25.7px;left:70.796%;margin-left:-40px;width:80px;">
+			<p class="g-pstyle13">640</p>
+			<p class="g-pstyle5">Climate </p>
+			<p class="g-pstyle5">policy</p>
+		</div>
+		<div id="S-text-18" class="g-interactions g-aiAbs g-aiPointText" style="top:87.2934%;margin-top:-25.7px;left:92.9962%;margin-left:-50.5px;width:101px;">
+			<p class="g-pstyle14">908</p>
+			<p class="g-pstyle5">Forest and </p>
+			<p class="g-pstyle5">wildlife</p>
+		</div>
+		<div id="S-text-17" class="g-interactions g-aiAbs g-aiPointText" style="top:85.824%;margin-top:-18.5px;left:81.4141%;margin-left:-43.5px;width:87px;">
+			<p class="g-pstyle15">694</p>
+			<p class="g-pstyle5">Pollution</p>
+		</div>
+		<div id="g-ai0-16" class="g-Layer_1 g-aiAbs" style="top:95.9212%;right:2.9617%;width:15.2564%;">
+			<p class="g-pstyle16">Source: sansad.in/ls</p>
+		</div>
+	</div>
+
+	<!-- Artboard: Artboard_4 -->
+	<div id="g-Question-type-Artboard_4" class="g-artboard" style="max-width: 435px;max-height: 497px" data-aspect-ratio="0.875" data-min-width="0" data-max-width="779">
+<div style="padding: 0 0 114.3066% 0;"></div>
+		<img id="g-Question-type-Artboard_4-img" class="g-Question-type-Artboard_4-img g-aiImg" alt="" src="Question-type-Artboard_4.png"/>
+<!-- Generator: Adobe Illustrator 27.7.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg class="g-Question-type-Artboard_4-interactions-img g-aiImg" version="1.2" baseProfile="tiny" id="g-Question-type-Artboard_4-interactions-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 434.701 497.234" overflow="visible" xml:space="preserve">
+<g>
+	<path id="S-Path-9" data-name="S-Path-9" fill="none" stroke="#CCCCCC" d="M195.405,99.095
+		c83.447-0.729,82.838-70.369,166.285-71.099"/>
+	<path id="S-Path-8" data-name="S-Path-8" fill="none" stroke="#CCCCCC" d="M194.161,99.185
+		c83.937-0.734,83.734-23.953,167.671-24.686"/>
+	<path id="S-Path-7" data-name="S-Path-7" fill="none" stroke="#CCCCCC" d="M200.268,100.287
+		c77.743-0.679,77.997,28.362,155.74,27.682"/>
+	<path id="S-Path-6" data-name="S-Path-6" fill="none" stroke="#CCCCCC" d="M200.267,100.104
+		c81.522-0.713,82.254,83.001,163.775,82.288"/>
+	<path id="S-Path-5" data-name="S-Path-5" fill="none" stroke="#CCCCCC" d="M200.268,100.379
+		c81.622-0.713,82.827,137.205,164.449,136.491"/>
+	<path id="S-Path-4" data-name="S-Path-4" fill="none" stroke="#CCCCCC" d="M200.27,100.423
+		c81.522-0.712,83.203,191.601,164.726,190.889"/>
+	<path id="S-Path-3" data-name="S-Path-3" fill="none" stroke="#CCCCCC" d="M200.265,99.906
+		c81.413-0.712,83.575,246.584,164.988,245.872"/>
+	<path id="S-Path-2" data-name="S-Path-2" fill="none" stroke="#CCCCCC" d="M200.265,99.906
+		c81.621-0.713,84.259,301.041,165.88,300.328"/>
+	<path id="S-Path-1" data-name="S-Path-1" fill="none" stroke="#CCCCCC" d="M200.268,100.308
+		c80.694-0.705,83.804,355.106,164.498,354.4"/>
+	<path id="S-circle-9" data-name="S-circle-9" fill="#1B6C71" d="M369.74,24.906
+		c4.794-0.112,4.86,7.419,0.064,7.39C365.011,32.408,364.945,24.877,369.74,24.906z"/>
+	<path id="S-circle-8" data-name="S-circle-8" fill="#34888C" d="M369.744,70.834
+		c4.191-0.098,4.249,6.486,0.056,6.461C365.61,77.393,365.552,70.808,369.744,70.834z"/>
+	<path id="S-circle-7" data-name="S-circle-7" fill="#66AAAE" d="M369.745,125.425
+		c4.025-0.094,4.08,6.229,0.054,6.205C365.775,131.723,365.72,125.4,369.745,125.425z"/>
+	<path id="S-circle-6" data-name="S-circle-6" fill="#5ABFBC" d="M369.747,180.085
+		c3.768-0.088,3.82,5.832,0.051,5.809C366.03,185.982,365.978,180.063,369.747,180.085z"/>
+	<path id="S-circle-5" data-name="S-circle-5" fill="#85E5E0" d="M369.749,234.769
+		c3.482-0.081,3.53,5.389,0.047,5.368C366.314,240.218,366.266,234.748,369.749,234.769z"/>
+	<path id="S-circle-4" data-name="S-circle-4" fill="#28A5F9" d="M369.752,289.553
+		c3.064-0.072,3.106,4.742,0.041,4.724C366.729,294.349,366.687,289.535,369.752,289.553z"/>
+	<path id="S-circle-3" data-name="S-circle-3" fill="#90CFFB" d="M369.752,344.081
+		c2.98-0.07,3.021,4.613,0.04,4.595C366.812,348.745,366.771,344.063,369.752,344.081z"/>
+	<path id="S-circle-2" data-name="S-circle-2" fill="#1F77B4" d="M369.757,399.068
+		c2.3-0.054,2.331,3.56,0.031,3.546C367.488,402.668,367.457,399.054,369.757,399.068z"/>
+	<path id="S-circle-1" data-name="S-circle-1" fill="#284BB9" d="M369.76,453.848
+		c1.889-0.044,1.915,2.924,0.025,2.912C367.896,456.804,367.87,453.836,369.76,453.848z"/>
+	<path id="H-circle-3" data-name="H-circle-3" fill="#C5D1D8" d="M226.594,331.519
+		c57.831,0.475,58.574,85.267,0.767,86.731C169.532,417.774,168.789,332.982,226.594,331.519z"/>
+	
+		<circle id="H-circle-2" data-name="H-circle-2" fill="#1F77B4" cx="198.386" cy="100.421" r="11.657"/>
+	<path id="H-Path-4" data-name="H-Path-4" fill="none" stroke="#CCCCCC" d="M175.37,186.187
+		c5.869-0.051,5.113-86.474,10.982-86.525"/>
+	<path id="H-Path-3" data-name="H-Path-3" fill="none" stroke="#CCCCCC" d="M172.191,281.35
+		c5.523-0.048,6.341,93.553,11.863,93.504"/>
+</g>
+<style>
+#g-Question-type-Artboard_4-interactions-img rect, #g-Question-type-Artboard_4-interactions-img circle, #g-Question-type-Artboard_4-interactions-img path, #g-Question-type-Artboard_4-interactions-img line, #g-Question-type-Artboard_4-interactions-img polyline, #g-Question-type-Artboard_4-interactions-img polygon { vector-effect: non-scaling-stroke; }
+</style>
+</svg>
+
+		<div id="H-text-2" class="g-interactions g-aiAbs g-aiPointText" style="top:9.5617%;margin-top:-33.5px;left:39.4327%;margin-left:-125.5px;width:251px;">
+			<p class="g-pstyle0">4,354</p>
+			<p class="g-pstyle1">Questions Indian legislators asked to </p>
+			<p class="g-pstyle1">the Union Ministry of Environment, </p>
+			<p class="g-pstyle1">Forest and Climate Change</p>
+		</div>
+		<div id="S-text-9" class="g-interactions g-aiAbs g-aiPointText" style="top:9.53%;margin-top:-13.4px;left:84.9845%;margin-left:-58.5px;width:117px;">
+			<p class="g-pstyle2">908</p>
+			<p class="g-pstyle3">Forest and wildlife</p>
+		</div>
+		<div id="S-text-8" class="g-interactions g-aiAbs g-aiPointText" style="top:19.1394%;margin-top:-13.2px;left:84.9825%;margin-left:-33.5px;width:67px;">
+			<p class="g-pstyle4">694</p>
+			<p class="g-pstyle3">Pollution</p>
+		</div>
+		<div id="S-text-7" class="g-interactions g-aiAbs g-aiPointText" style="top:29.6192%;margin-top:-13.3px;left:84.9836%;margin-left:-46px;width:92px;">
+			<p class="g-pstyle5">640</p>
+			<p class="g-pstyle3">Climate policy</p>
+		</div>
+		<div id="g-ai1-5" class="g-Layer_1 g-aiAbs" style="top:29.7647%;right:70.0856%;width:29.6552%;">
+			<p class="g-pstyle6">Not enough questions</p>
+			<p class="g-pstyle7">Only 3.5% of </p>
+			<p class="g-pstyle8">questions raised by legislators in the Lower House of Parliament in the past 10 years revolved around climate change</p>
+		</div>
+		<div id="S-text-6" class="g-interactions g-aiAbs g-aiPointText" style="top:40.6716%;margin-top:-13.2px;left:84.9832%;margin-left:-41px;width:82px;">
+			<p class="g-pstyle9">561</p>
+			<p class="g-pstyle3">Conservation</p>
+		</div>
+		<div id="g-ai1-7" class="g-Layer_1 g-aiAbs" style="top:41.027%;left:41.3452%;margin-left:-8.3908%;width:16.7816%;">
+			<p class="g-pstyle10">133,023</p>
+		</div>
+		<div id="g-ai1-8" class="g-Layer_1 g-aiAbs g-aiPointText" style="top:49.2565%;margin-top:-24.9px;left:42.0937%;margin-left:-44px;width:88px;">
+			<p class="g-pstyle11">Questitons </p>
+			<p class="g-pstyle11">raised in </p>
+			<p class="g-pstyle11">Parliament</p>
+			<p class="g-pstyle11">(2014-2023)</p>
+		</div>
+		<div id="S-text-5" class="g-interactions g-aiAbs g-aiPointText" style="top:51.3393%;margin-top:-13.3px;left:84.9836%;margin-left:-46px;width:92px;">
+			<p class="g-pstyle12">479</p>
+			<p class="g-pstyle3">Climate impact</p>
+		</div>
+		<div id="S-text-4" class="g-interactions g-aiAbs g-aiPointText" style="top:62.1642%;margin-top:-13.1px;left:84.982%;margin-left:-26px;width:52px;">
+			<p class="g-pstyle13">371</p>
+			<p class="g-pstyle3">Others</p>
+		</div>
+		<div id="S-text-3" class="g-interactions g-aiAbs g-aiPointText" style="top:73.2211%;margin-top:-13.1px;left:84.9818%;margin-left:-23.5px;width:47px;">
+			<p class="g-pstyle14">351</p>
+			<p class="g-pstyle3">Waste</p>
+		</div>
+		<div id="S-text-2" class="g-interactions g-aiAbs g-aiPointText" style="top:85.1258%;margin-top:-18.3px;left:84.9838%;margin-left:-46px;width:92px;">
+			<p class="g-pstyle15">209</p>
+			<p class="g-pstyle3">Environmental </p>
+			<p class="g-pstyle3">clearances</p>
+		</div>
+		<div id="H-text-4" class="g-interactions g-aiAbs g-aiPointText" style="top:89.1866%;margin-top:-27.5px;left:50.6995%;margin-left:-116px;width:232px;">
+			<p class="g-pstyle0">128,669</p>
+			<p class="g-pstyle1">Questions Indian legislators asked </p>
+			<p class="g-pstyle1">to other Union ministries</p>
+		</div>
+		<div id="S-text-1" class="g-interactions g-aiAbs g-aiPointText" style="top:94.7446%;margin-top:-13.1px;left:84.9825%;margin-left:-26px;width:52px;">
+			<p class="g-pstyle16">141</p>
+			<p class="g-pstyle3">Crimes</p>
+		</div>
+		<div id="g-ai1-15" class="g-Layer_1 g-aiAbs" style="top:95.5285%;right:69.0716%;width:32.1839%;">
+			<p class="g-pstyle17">Source: sansad.in/ls</p>
+		</div>
+	</div>
+
+<!-- Custom HTML -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+<style>
+    .hidden { visibility: hidden; }
+</style>
+
+</div>
+
+<!-- End ai2html - 2023-07-25 11:58 -->
+
+
+<!-- ai2html goes above this line -->
+
+          </div>
+        </div>
+		</div>
+
+        <div class="scrolly-overlay">
+          <div class="step" id="step-zero">
+            <p>Indian legislators have raised <span style="background: #1c77b3">
+              <span style="color: whitesmoke"> 133,032 questions</span></span> in Parliament in the past 10 years.</p>
+          </div>
+          <div class="step" id="step-one">
+            <p>Just 3.5% of these questions were for the Union Ministry of Environment, Forest and Climate Change</p>
+          </div>
+          <div class="step" id="step-two">
+            <p>Majority of the climate-related questions were on forests and wildlife (21%), pollution (16%) and performance of government schemes (15%).</p>
+          </div>
+          <div class="step" id="step-three">
+            <p>There were fewer questions on crimes (3%), environmental clearances (5%), waste (8%) and climate impact (11%) .</p>
+          </div>
+        </div>
+      </section>
+
+    <script>
+      
+      /* Scrollytelling code goes under here
+      undo step-zero*/
+
+
+      /* carry out original steps*/
+      d3.select("#g-ai0-2").classed('hidden', true);
+      d3.select("#g-ai0-4").classed('hidden', true);
+      d3.select("#H-text-1").classed('hidden', true);
+      d3.select("#H-text-2").classed('hidden', true);
+      d3.select("#H-text-3").classed('hidden', true);
+      d3.select("#H-text-4").classed('hidden', true);
+      d3.select("#S-text-1").classed('hidden', true);
+      d3.select("#S-text-2").classed('hidden', true);
+      d3.select("#S-text-3").classed('hidden', true);
+      d3.select("#S-text-4").classed('hidden', true);
+      d3.select("#S-text-5").classed('hidden', true);
+      d3.select("#S-text-6").classed('hidden', true);
+      d3.select("#S-text-7").classed('hidden', true);
+      d3.select("#S-text-8").classed('hidden', true);
+      d3.select("#S-text-9").classed('hidden', true);
+      d3.select("#S-text-10").classed('hidden', true);
+      d3.select("#S-text-11").classed('hidden', true);
+      d3.select("#S-text-12").classed('hidden', true);
+      d3.select("#S-text-13").classed('hidden', true);
+      d3.select("#S-text-14").classed('hidden', true);
+      d3.select("#S-text-15").classed('hidden', true);
+      d3.select("#S-text-16").classed('hidden', true);
+      d3.select("#S-text-17").classed('hidden', true);
+      d3.select("#S-text-18").classed('hidden', true);
+
+      d3.select("#step-zero").on('stepin', function(e) {
+        console.log("Got to step zero.")
+      d3.select("#g-ai0-2").classed('hidden', false);
+      d3.select("#g-ai0-4").classed('hidden', false);
+      d3.select("#H-text-1").classed('hidden', true);
+      d3.select("#H-text-2").classed('hidden', true);
+      d3.select("#H-text-3").classed('hidden', true);
+      d3.select("#H-text-4").classed('hidden', true);
+      })
+      
+      d3.select("#step-one").on('stepin', function(e) {
+        console.log("Got to step one.")
+
+      /*undo step-two */
+      d3.select("#S-text-1").classed('hidden', true);
+      d3.select("#S-text-2").classed('hidden', true);
+      d3.select("#S-text-3").classed('hidden', true);
+      d3.select("#S-text-4").classed('hidden', true);
+      d3.select("#S-text-5").classed('hidden', true);
+      d3.select("#S-text-6").classed('hidden', true);
+      d3.select("#S-text-7").classed('hidden', true);
+      d3.select("#S-text-8").classed('hidden', true);
+      d3.select("#S-text-9").classed('hidden', true);
+      d3.select("#S-text-10").classed('hidden', true);
+      d3.select("#S-text-11").classed('hidden', true);
+      d3.select("#S-text-12").classed('hidden', true);
+      d3.select("#S-text-13").classed('hidden', true);
+      d3.select("#S-text-14").classed('hidden', true);
+      d3.select("#S-text-15").classed('hidden', true);
+      d3.select("#S-text-16").classed('hidden', true);
+      d3.select("#S-text-17").classed('hidden', true);
+      d3.select("#S-text-18").classed('hidden', true);
+      /*carry out step-one*/  
+      d3.select("#H-text-1").classed('hidden', false);
+      d3.select("#H-text-2").classed('hidden', false);
+      d3.select("#H-text-3").classed('hidden', false);
+      d3.select("#H-text-4").classed('hidden', false);
+      })
+
+      d3.select("#step-two").on('stepin', function(e) {
+        console.log("Got to step two.")
+      d3.select("#H-text-1").classed('hidden', false);
+      d3.select("#H-text-2").classed('hidden', false);
+      d3.select("#H-text-3").classed('hidden', false);
+      d3.select("#H-text-4").classed('hidden', false);
+      d3.select("#S-text-1").classed('hidden', true);
+      d3.select("#S-text-2").classed('hidden', true);
+      d3.select("#S-text-3").classed('hidden', true);
+      d3.select("#S-text-4").classed('hidden', true);
+      d3.select("#S-text-5").classed('hidden', true);
+      d3.select("#S-text-6").classed('hidden', false);
+      d3.select("#S-text-7").classed('hidden', false);
+      d3.select("#S-text-8").classed('hidden', false);
+      d3.select("#S-text-9").classed('hidden', false);
+      d3.select("#S-text-10").classed('hidden', true);
+      d3.select("#S-text-11").classed('hidden', true);
+      d3.select("#S-text-12").classed('hidden', true);
+      d3.select("#S-text-13").classed('hidden', true);
+      d3.select("#S-text-14").classed('hidden', true);
+      d3.select("#S-text-15").classed('hidden', false);
+      d3.select("#S-text-16").classed('hidden', false);
+      d3.select("#S-text-17").classed('hidden', false);
+      d3.select("#S-text-18").classed('hidden', false);
+      })
+      d3.select("#step-three").on('stepin', function(e) {
+        console.log("Got to step three.")
+      d3.select("#H-text-1").classed('hidden', false);
+      d3.select("#H-text-2").classed('hidden', false);
+      d3.select("#H-text-3").classed('hidden', false);
+      d3.select("#H-text-4").classed('hidden', false);
+      d3.select("#S-text-1").classed('hidden', false);
+      d3.select("#S-text-2").classed('hidden', false);
+      d3.select("#S-text-3").classed('hidden', false);
+      d3.select("#S-text-4").classed('hidden', false);
+      d3.select("#S-text-5").classed('hidden', false);
+      d3.select("#S-text-6").classed('hidden', false);
+      d3.select("#S-text-7").classed('hidden', false);
+      d3.select("#S-text-8").classed('hidden', false);
+      d3.select("#S-text-9").classed('hidden', false);
+      d3.select("#S-text-10").classed('hidden', false);
+      d3.select("#S-text-11").classed('hidden', false);
+      d3.select("#S-text-12").classed('hidden', false);
+      d3.select("#S-text-13").classed('hidden', false);
+      d3.select("#S-text-14").classed('hidden', false);
+      d3.select("#S-text-15").classed('hidden', false);
+      d3.select("#S-text-16").classed('hidden', false);
+      d3.select("#S-text-17").classed('hidden', false);
+      d3.select("#S-text-18").classed('hidden', false);
+      })
+
+
+    </script>
+
+<script>
+    const scroller = scrollama();
+
+	scroller
+		.setup({
+			step: "#scrolly .scrolly-overlay .step",
+			offset: 0.75,
+			debug: false
+		})
+		.onStepEnter(function({ element, index, direction}) {
+			const event = new CustomEvent('stepin', { detail: { direction: direction } })
+			element.dispatchEvent(event);
+		})
+		.onStepExit(function({ element, index, direction }) {
+			const event = new CustomEvent('stepout', { detail: { direction: direction } })
+			element.dispatchEvent(event);
+		});
+
+	window.addEventListener("resize", scroller.resize);
+    </script>
+
+
+    <!-- ai2html resizer script -->
+
+<script type="text/javascript">
+  (function() {
+      // only want one resizer on the page
+      if (document.documentElement.className.indexOf("g-resizer-v3-init") > -1) return;
+      document.documentElement.className += " g-resizer-v3-init";
+      // require IE9+
+      if (!("querySelector" in document)) return;
+      function resizer() {
+          var elements = Array.prototype.slice.call(document.querySelectorAll(".g-artboard[data-min-width]")),
+              widthById = {};
+          elements.forEach(function(el) {
+              var parent = el.parentNode,
+                  width = widthById[parent.id] || parent.getBoundingClientRect().width,
+                  minwidth = el.getAttribute("data-min-width"),
+                  maxwidth = el.getAttribute("data-max-width");
+              widthById[parent.id] = width;
+
+              if (+minwidth <= width && (+maxwidth >= width || maxwidth === null)) {
+                  el.style.display = "block";
+              } else {
+                  el.style.display = "none";
+              }
+          });
+          try {
+              if (window.parent && window.parent.$) {
+                  window.parent.$("body").trigger("resizedcontent", [window]);
+              }
+              if (window.require) {
+                  require(['foundation/main'], function() {
+                      require(['shared/interactive/instances/app-communicator'], function(AppCommunicator) {
+                          AppCommunicator.triggerResize();
+                      });
+                  });
+              }
+          } catch(e) { console.log(e); }
+      }
+
+      document.addEventListener('DOMContentLoaded', resizer);
+      // feel free to replace throttle with _.throttle, if available
+      window.addEventListener('resize', throttle(resizer, 200));        
+
+      function throttle(func, wait) {
+          // from underscore.js
+          var _now = Date.now || function() { return new Date().getTime(); },
+              context, args, result, timeout = null, previous = 0;
+          var later = function() {
+              previous = _now();
+              timeout = null;
+              result = func.apply(context, args);
+              if (!timeout) context = args = null;
+          };
+          return function() {
+              var now = _now(), remaining = wait - (now - previous);
+              context = this;
+              args = arguments;
+              if (remaining <= 0 || remaining > wait) {
+                  if (timeout) {
+                      clearTimeout(timeout);
+                      timeout = null;
+                  }
+                  previous = now;
+                  result = func.apply(context, args);
+                  if (!timeout) context = args = null;
+              } else if (!timeout && options.trailing !== false) {
+                  timeout = setTimeout(later, remaining);
+              }
+              return result;
+          };
+      }
+
+     
+  })();
+</script>
+
+<section class="story-body">
+	<p>In the past 10 years, parliamentarians in India have asked a total of 133,123 questions to the government. Of these, only 3.35%, or 4,455, were directed to the Ministry of Environment, Forest and Climate Change. <p>
+	<p>When I further analysed the categories that were included in these 4,455 questions, it turned out that the majority (21%) were about wildlife and forests, followed by questions around environmental pollution (16%) and various government policies and schemes on climate change (15%). </p>
+	
+	<p>Conversations about conservation projects made up 13% of the questions, and climate impact (which includes extreme weather events and various government assessments on the loss and damage due to climate change) accounted for 11%..  </p>
+	
+	<p>Conversations about Environmental Waste accounted for 8% of the questions, while questions about environmental crimes and clearances accounted for 3% and 5% of the total questions asked, respectively.    </p>
+</section>
+
+
+
+<!-- Generated by ai2html v0.111.0 - 2023-07-25 17:13 -->
+<!-- ai file: Year-wise.ai -->
+<style media="screen,print">
+	#g-Year-wise-box ,
+	#g-Year-wise-box .g-artboard {
+		margin:0 auto;
+	}
+	#g-Year-wise-box p {
+		margin:0;
+	}
+	#g-Year-wise-box .g-aiAbs {
+		position:absolute;
+	}
+	#g-Year-wise-box .g-aiImg {
+		position:absolute;
+		top:0;
+		display:block;
+		width:100% !important;
+	}
+	#g-Year-wise-box .g-aiSymbol {
+		position: absolute;
+		box-sizing: border-box;
+	}
+	#g-Year-wise-box .g-aiPointText p { white-space: nowrap; }
+	#g-Year-wise-Artboard_3 {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-Year-wise-Artboard_3 p {
+		font-family:Roboto Mono;
+		font-weight:400;
+		line-height:22px;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:18px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		height:auto;
+		position:static;
+	}
+	#g-Year-wise-Artboard_3 .g-pstyle0 {
+		font-weight:700;
+		line-height:43px;
+		font-size:36px;
+	}
+	#g-Year-wise-Artboard_3 .g-pstyle1 {
+		line-height:16px;
+		letter-spacing:-0.009em;
+		font-size:13px;
+		text-align:right;
+	}
+	#g-Year-wise-Artboard_3 .g-pstyle2 {
+		line-height:10px;
+		height:10px;
+		font-size:8px;
+	}
+	#g-Year-wise-Artboard_3 .g-pstyle3 {
+		line-height:12px;
+		height:12px;
+		font-size:10px;
+		color:rgb(239,239,239);
+	}
+	#g-Year-wise-Artboard_3 .g-pstyle4 {
+		line-height:12px;
+		height:12px;
+		font-size:10px;
+		color:rgb(255,255,255);
+	}
+	#g-Year-wise-Artboard_3 .g-pstyle5 {
+		line-height:12px;
+		height:12px;
+		font-size:10px;
+	}
+	#g-Year-wise-Artboard_3 .g-pstyle6 {
+		line-height:12px;
+		height:12px;
+		font-size:10px;
+		color:rgb(249,249,249);
+	}
+	#g-Year-wise-Artboard_3 .g-pstyle7 {
+		line-height:12px;
+		height:12px;
+		font-size:10px;
+		color:rgb(245,246,247);
+	}
+	#g-Year-wise-Artboard_3 .g-pstyle8 {
+		font-weight:500;
+		line-height:10px;
+		height:10px;
+		font-size:8px;
+	}
+	#g-Year-wise-Artboard_3 .g-pstyle9 {
+		font-family:arial,helvetica,sans-serif;
+		line-height:12px;
+		font-size:10px;
+		text-align:right;
+	}
+	#g-Year-wise-Artboard_3 .g-cstyle0 {
+		font-family:Roboto Mono;
+		font-weight:400;
+	}
+	#g-Year-wise-Artboard_4 {
+		position:relative;
+		overflow:hidden;
+	}
+	#g-Year-wise-Artboard_4 p {
+		font-family:Roboto Mono;
+		font-weight:400;
+		line-height:16px;
+		opacity:1;
+		letter-spacing:0em;
+		font-size:15px;
+		text-align:left;
+		color:rgb(0,0,0);
+		text-transform:none;
+		padding-bottom:0;
+		padding-top:0;
+		mix-blend-mode:normal;
+		font-style:normal;
+		height:auto;
+		position:static;
+	}
+	#g-Year-wise-Artboard_4 .g-pstyle0 {
+		font-weight:700;
+		line-height:36px;
+		font-size:30px;
+	}
+	#g-Year-wise-Artboard_4 .g-pstyle1 {
+		line-height:13px;
+		letter-spacing:-0.009em;
+		font-size:10px;
+		text-align:right;
+	}
+	#g-Year-wise-Artboard_4 .g-pstyle2 {
+		line-height:12px;
+		height:12px;
+		font-size:10px;
+		text-align:center;
+		color:rgb(249,249,249);
+	}
+	#g-Year-wise-Artboard_4 .g-pstyle3 {
+		line-height:12px;
+		height:12px;
+		font-size:10px;
+		text-align:center;
+		color:rgb(255,255,255);
+	}
+	#g-Year-wise-Artboard_4 .g-pstyle4 {
+		line-height:12px;
+		height:12px;
+		font-size:10px;
+		text-align:center;
+	}
+	#g-Year-wise-Artboard_4 .g-pstyle5 {
+		line-height:12px;
+		height:12px;
+		font-size:10px;
+		text-align:center;
+		color:rgb(239,239,239);
+	}
+	#g-Year-wise-Artboard_4 .g-pstyle6 {
+		line-height:12px;
+		height:12px;
+		font-size:10px;
+		text-align:center;
+		color:rgb(245,246,247);
+	}
+	#g-Year-wise-Artboard_4 .g-pstyle7 {
+		line-height:12px;
+		height:12px;
+		font-size:10px;
+		text-align:right;
+	}
+	#g-Year-wise-Artboard_4 .g-pstyle8 {
+		line-height:12px;
+		font-size:9px;
+		text-align:right;
+	}
+
+</style>
+
+<div id="g-Year-wise-box" class="ai2html">
+
+	<!-- Artboard: Artboard_3 -->
+	<div id="g-Year-wise-Artboard_3" class="g-artboard" style="width:780px; height:489.985589849208px;" data-aspect-ratio="1.592" data-min-width="780">
+<div style=""></div>
+		<img id="g-Year-wise-Artboard_3-img" class="g-Year-wise-Artboard_3-img g-aiImg" alt="" src="Year-wise-Artboard_3.png"/>
+<!-- Generator: Adobe Illustrator 27.7.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg class="g-Year-wise-Artboard_3-interactions-img g-aiImg" version="1.2" baseProfile="tiny" id="g-Year-wise-Artboard_3-interactions-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 780 489.986" overflow="visible" xml:space="preserve">
+<g>
+	<rect x="60.373" y="334.53" fill="#85E5E0" width="38.906" height="29.586"/>
+	<rect x="118.928" y="337.818" fill="#85E5E0" width="38.906" height="32.873"/>
+	<rect x="177.483" y="327.956" fill="#85E5E0" width="38.906" height="29.586"/>
+	<rect x="353.147" y="346.748" fill="#85E5E0" width="38.906" height="43.102"/>
+	<rect x="411.702" y="334.53" fill="#85E5E0" width="38.906" height="49.31"/>
+	<rect x="470.257" y="341.105" fill="#85E5E0" width="38.906" height="46.022"/>
+	<rect x="528.811" y="341.105" fill="#85E5E0" width="38.906" height="32.873"/>
+	<rect x="587.366" y="341.105" fill="#85E5E0" width="38.906" height="42.735"/>
+	<rect x="646.233" y="359.255" fill="#85E5E0" width="98.837" height="13"/>
+	<rect x="60.373" y="242.485" fill="#66AAAE" width="38.906" height="42.735"/>
+	<rect x="118.928" y="245.773" fill="#66AAAE" width="38.906" height="49.31"/>
+	<rect x="177.483" y="252.347" fill="#66AAAE" width="38.906" height="39.448"/>
+	<rect x="353.147" y="253.913" fill="#66AAAE" width="38.906" height="49.733"/>
+	<rect x="411.702" y="249.06" fill="#66AAAE" width="38.906" height="42.735"/>
+	<rect x="470.257" y="242.485" fill="#66AAAE" width="38.906" height="52.597"/>
+	<rect x="528.811" y="239.198" fill="#66AAAE" width="38.906" height="62.459"/>
+	<rect x="587.366" y="229.336" fill="#66AAAE" width="38.906" height="69.034"/>
+	<rect x="646.233" y="257.716" fill="#66AAAE" width="91.371" height="13"/>
+	<rect x="60.373" y="285.22" fill="#5ABFBC" width="38.906" height="49.31"/>
+	<rect x="118.928" y="295.082" fill="#5ABFBC" width="38.906" height="42.735"/>
+	<rect x="177.483" y="291.795" fill="#5ABFBC" width="38.906" height="36.16"/>
+	<rect x="353.147" y="303.646" fill="#5ABFBC" width="38.906" height="43.102"/>
+	<rect x="411.702" y="291.795" fill="#5ABFBC" width="38.906" height="42.735"/>
+	<rect x="470.257" y="295.082" fill="#5ABFBC" width="38.906" height="46.022"/>
+	<rect x="528.811" y="301.657" fill="#5ABFBC" width="38.906" height="39.448"/>
+	<rect x="587.366" y="298.37" fill="#5ABFBC" width="38.906" height="42.735"/>
+	<rect x="646.233" y="317.231" fill="#5ABFBC" width="84.994" height="13"/>
+	<rect x="60.373" y="439.724" fill="#284BB9" width="38.906" height="16.437"/>
+	<rect x="118.928" y="443.012" fill="#284BB9" width="38.906" height="13.149"/>
+	<rect x="177.483" y="446.299" fill="#284BB9" width="38.906" height="9.862"/>
+	<rect x="353.09" y="451.308" fill="#284BB9" width="39.062" height="5.135"/>
+	<rect x="411.702" y="446.299" fill="#284BB9" width="38.906" height="9.862"/>
+	<rect x="470.257" y="446.299" fill="#284BB9" width="38.906" height="9.862"/>
+	<rect x="528.811" y="439.724" fill="#284BB9" width="38.906" height="16.437"/>
+	<rect x="587.366" y="446.299" fill="#284BB9" width="38.906" height="9.862"/>
+	<rect x="646.233" y="441.289" fill="#284BB9" width="38.906" height="13"/>
+	<rect x="60.373" y="413.426" fill="#1F77B4" width="38.906" height="26.299"/>
+	<rect x="118.928" y="426.575" fill="#1F77B4" width="38.906" height="16.437"/>
+	<rect x="177.483" y="429.862" fill="#1F77B4" width="38.906" height="16.437"/>
+	<rect x="353.147" y="442.899" fill="#1F77B4" width="38.906" height="9.947"/>
+	<rect x="411.702" y="429.862" fill="#1F77B4" width="38.906" height="16.437"/>
+	<rect x="470.257" y="429.862" fill="#1F77B4" width="38.906" height="16.437"/>
+	<rect x="528.811" y="426.575" fill="#1F77B4" width="38.906" height="13.149"/>
+	<rect x="587.366" y="436.437" fill="#1F77B4" width="38.906" height="9.862"/>
+	<rect x="646.233" y="428.029" fill="#1F77B4" width="88.961" height="13"/>
+	<rect x="60.373" y="203.038" fill="#34888C" width="38.906" height="39.448"/>
+	<rect x="118.928" y="189.888" fill="#34888C" width="38.906" height="55.884"/>
+	<rect x="177.483" y="193.176" fill="#34888C" width="38.906" height="59.172"/>
+	<rect x="353.147" y="194.233" fill="#34888C" width="38.906" height="59.68"/>
+	<rect x="411.702" y="209.612" fill="#34888C" width="38.906" height="39.448"/>
+	<rect x="470.257" y="193.176" fill="#34888C" width="38.906" height="49.31"/>
+	<rect x="528.811" y="193.176" fill="#34888C" width="38.906" height="46.022"/>
+	<rect x="587.366" y="166.877" fill="#34888C" width="38.906" height="62.459"/>
+	<rect x="646.233" y="210.105" fill="#34888C" width="64.278" height="13"/>
+	<rect x="60.373" y="364.116" fill="#90CFFB" width="38.906" height="16.437"/>
+	<rect x="118.928" y="370.691" fill="#90CFFB" width="38.906" height="16.437"/>
+	<rect x="177.483" y="357.541" fill="#90CFFB" width="38.906" height="29.586"/>
+	<rect x="353.147" y="389.85" fill="#90CFFB" width="38.906" height="29.84"/>
+	<rect x="411.702" y="383.84" fill="#90CFFB" width="38.906" height="32.873"/>
+	<rect x="470.257" y="387.127" fill="#90CFFB" width="38.906" height="29.586"/>
+	<rect x="528.811" y="373.978" fill="#90CFFB" width="38.906" height="29.586"/>
+	<rect x="587.366" y="383.84" fill="#90CFFB" width="38.906" height="39.448"/>
+	<rect x="646.233" y="395.383" fill="#90CFFB" width="47.973" height="13"/>
+	<rect x="60.373" y="127.429" fill="#1B6C71" width="38.906" height="75.608"/>
+	<rect x="118.928" y="127.429" fill="#1B6C71" width="38.906" height="62.459"/>
+	<rect x="177.483" y="127.429" fill="#1B6C71" width="38.906" height="65.746"/>
+	<rect x="353.147" y="127.923" fill="#1B6C71" width="38.906" height="66.311"/>
+	<rect x="411.702" y="127.279" fill="#1B6C71" width="38.906" height="82.333"/>
+	<rect x="470.257" y="128.206" fill="#1B6C71" width="38.906" height="64.97"/>
+	<rect x="528.811" y="127.897" fill="#1B6C71" width="38.906" height="65.279"/>
+	<rect x="587.366" y="127.429" fill="#1B6C71" width="38.906" height="39.448"/>
+	<rect x="646.233" y="155.871" fill="#1B6C71" width="122.888" height="13"/>
+	<rect x="60.373" y="380.553" fill="#28A5F9" width="38.906" height="32.873"/>
+	<rect x="118.928" y="387.127" fill="#28A5F9" width="38.906" height="39.448"/>
+	<rect x="177.483" y="387.127" fill="#28A5F9" width="38.906" height="42.735"/>
+	<g>
+		<rect x="236.037" y="348.696" fill="#85E5E0" width="38.906" height="26.052"/>
+		<rect x="236.037" y="273.796" fill="#66AAAE" width="38.906" height="39.078"/>
+		<rect x="236.037" y="312.874" fill="#5ABFBC" width="38.906" height="35.822"/>
+		<rect x="236.037" y="443.135" fill="#284BB9" width="38.906" height="13.026"/>
+		<rect x="236.037" y="430.109" fill="#1F77B4" width="38.906" height="13.026"/>
+		<rect x="236.037" y="215.178" fill="#34888C" width="38.906" height="58.617"/>
+		<rect x="236.037" y="374.748" fill="#90CFFB" width="38.906" height="26.052"/>
+		<rect x="236.037" y="127.252" fill="#1B6C71" width="38.906" height="87.926"/>
+		<rect x="236.037" y="400.8" fill="#28A5F9" width="38.906" height="29.309"/>
+	</g>
+	<g>
+		<rect x="294.592" y="340.521" fill="#85E5E0" width="38.906" height="48.183"/>
+		<rect x="294.592" y="260.215" fill="#66AAAE" width="38.906" height="48.183"/>
+		<rect x="294.592" y="308.399" fill="#5ABFBC" width="38.906" height="32.122"/>
+		<rect x="294.592" y="452.949" fill="#284BB9" width="38.906" height="3.212"/>
+		<rect x="294.592" y="433.675" fill="#1F77B4" width="38.906" height="19.273"/>
+		<rect x="294.592" y="199.183" fill="#34888C" width="38.906" height="61.032"/>
+		<rect x="294.592" y="388.704" fill="#90CFFB" width="38.906" height="25.698"/>
+		<rect x="294.592" y="128.514" fill="#1B6C71" width="38.906" height="70.669"/>
+		<rect x="294.592" y="414.402" fill="#28A5F9" width="38.906" height="19.273"/>
+	</g>
+	<rect x="353.147" y="419.69" fill="#28A5F9" width="38.906" height="23.209"/>
+	<rect x="411.702" y="416.713" fill="#28A5F9" width="38.906" height="13.149"/>
+	<rect x="470.257" y="416.713" fill="#28A5F9" width="38.906" height="13.149"/>
+	<rect x="528.811" y="403.564" fill="#28A5F9" width="38.906" height="23.011"/>
+	<rect x="646.233" y="413.083" fill="#28A5F9" width="38.906" height="13"/>
+	<polygon fill="#28A5F9" points="587.404,423.288 626.309,423.287 626.234,436.436 587.329,436.438 	"/>
+	<path fill="none" stroke="#000000" d="M36.185,456.161h590.172"/>
+	<line fill="none" stroke="#000000" x1="75.497" y1="456.161" x2="75.497" y2="462.161"/>
+	<line fill="none" stroke="#000000" x1="134.367" y1="456.161" x2="134.367" y2="462.161"/>
+	<line fill="none" stroke="#000000" x1="193.237" y1="456.161" x2="193.237" y2="462.161"/>
+	<line fill="none" stroke="#000000" x1="252.108" y1="456.161" x2="252.108" y2="462.161"/>
+	<line fill="none" stroke="#000000" x1="310.978" y1="456.161" x2="310.978" y2="462.161"/>
+	<line fill="none" stroke="#000000" x1="369.848" y1="456.161" x2="369.848" y2="462.161"/>
+	<line fill="none" stroke="#000000" x1="428.718" y1="456.161" x2="428.718" y2="462.161"/>
+	<line fill="none" stroke="#000000" x1="487.588" y1="456.161" x2="487.588" y2="462.161"/>
+	<line fill="none" stroke="#000000" x1="546.458" y1="456.161" x2="546.458" y2="462.161"/>
+	<line fill="none" stroke="#000000" x1="605.328" y1="456.161" x2="605.328" y2="462.161"/>
+	<path fill="none" stroke="#000000" d="M36.185,456.161V128.79"/>
+	<line fill="none" stroke="#000000" x1="36.185" y1="456.009" x2="30.185" y2="456.009"/>
+	<line fill="none" stroke="#000000" x1="36.185" y1="423.449" x2="30.185" y2="423.449"/>
+	<line fill="none" stroke="#000000" x1="36.185" y1="390.738" x2="30.185" y2="390.738"/>
+	<line fill="none" stroke="#000000" x1="36.185" y1="358.026" x2="30.185" y2="358.026"/>
+	<line fill="none" stroke="#000000" x1="36.185" y1="325.315" x2="30.185" y2="325.315"/>
+	<line fill="none" stroke="#000000" x1="36.185" y1="292.603" x2="30.185" y2="292.603"/>
+	<line fill="none" stroke="#000000" x1="36.185" y1="259.891" x2="30.185" y2="259.891"/>
+	<line fill="none" stroke="#000000" x1="36.185" y1="227.18" x2="30.185" y2="227.18"/>
+	<line fill="none" stroke="#000000" x1="36.185" y1="194.468" x2="30.185" y2="194.468"/>
+	<line fill="none" stroke="#000000" x1="36.185" y1="161.757" x2="30.185" y2="161.757"/>
+	<g>
+		<g>
+		</g>
+	</g>
+	<line fill="none" stroke="#000000" x1="628.357" y1="163.968" x2="638.357" y2="163.999"/>
+	<line fill="none" stroke="#000000" x1="628.357" y1="216.988" x2="638.357" y2="216.774"/>
+	<line fill="none" stroke="#000000" x1="628.357" y1="264.346" x2="638.357" y2="264.132"/>
+	<line fill="none" stroke="#000000" x1="628.357" y1="322.773" x2="638.357" y2="322.803"/>
+	<line fill="none" stroke="#000000" x1="628.357" y1="367.576" x2="638.357" y2="367.361"/>
+	<line fill="none" stroke="#000000" x1="628.357" y1="404.136" x2="638.357" y2="403.922"/>
+	<line fill="none" stroke="#000000" x1="628.357" y1="441.717" x2="638.357" y2="441.503"/>
+	<line fill="none" stroke="#000000" x1="628.357" y1="451.036" x2="638.357" y2="450.822"/>
+</g>
+<style>
+#g-Year-wise-Artboard_3-interactions-img rect, #g-Year-wise-Artboard_3-interactions-img circle, #g-Year-wise-Artboard_3-interactions-img path, #g-Year-wise-Artboard_3-interactions-img line, #g-Year-wise-Artboard_3-interactions-img polyline, #g-Year-wise-Artboard_3-interactions-img polygon { vector-effect: non-scaling-stroke; }
+</style>
+</svg>
+
+		<div id="g-ai0-1" class="g-interactions g-aiAbs" style="top:2.8572%;left:1.8816%;width:43.0769%;">
+			<p class="g-pstyle0">A uniform trend</p>
+		</div>
+		<div id="g-ai0-2" class="g-interactions g-aiAbs" style="top:12.4493%;left:1.6981%;width:79.8718%;">
+			<p>Forest and wildlife, pollution and climate policy account for almost half of the climate-related questions </p>
+		</div>
+		<div id="g-ai0-3" class="g-Layer_1 g-aiAbs" style="top:24.4905%;right:0.7486%;width:20.1282%;">
+			<p class="g-pstyle1">Type of questions asked in Parliament</p>
+		</div>
+		<div id="g-ai0-4" class="g-interactions g-aiAbs g-aiPointText" style="top:26.0251%;margin-top:-5.5px;left:1.3184%;width:46px;">
+			<p class="g-pstyle2">100%</p>
+		</div>
+		<div id="g-ai0-5" class="g-interactions g-aiAbs g-aiPointText" style="top:32.964%;margin-top:-5.5px;left:1.3184%;width:40px;">
+			<p class="g-pstyle2">90%</p>
+		</div>
+		<div id="g-ai0-6" class="g-interactions g-aiAbs g-aiPointText" style="top:33.1912%;margin-top:-6.6px;left:82.8503%;width:142px;">
+			<p class="g-pstyle3">Forest and wildlife </p>
+		</div>
+		<div id="g-ai0-7" class="g-interactions g-aiAbs g-aiPointText" style="top:39.6989%;margin-top:-5.5px;left:1.3184%;width:40px;">
+			<p class="g-pstyle2">80%</p>
+		</div>
+		<div id="g-ai0-8" class="g-interactions g-aiAbs g-aiPointText" style="top:44.212%;margin-top:-6.6px;left:82.8503%;width:76px;">
+			<p class="g-pstyle3">Pollution</p>
+		</div>
+		<div id="g-ai0-9" class="g-interactions g-aiAbs g-aiPointText" style="top:46.4338%;margin-top:-5.5px;left:1.3184%;width:40px;">
+			<p class="g-pstyle2">70%</p>
+		</div>
+		<div id="g-ai0-10" class="g-interactions g-aiAbs g-aiPointText" style="top:52.7606%;margin-top:-5.5px;left:1.3184%;width:40px;">
+			<p class="g-pstyle2">60%</p>
+		</div>
+		<div id="g-ai0-11" class="g-interactions g-aiAbs g-aiPointText" style="top:53.8041%;margin-top:-6.6px;left:82.8503%;width:106px;">
+			<p class="g-pstyle4">Climate policy</p>
+		</div>
+		<div id="g-ai0-12" class="g-interactions g-aiAbs g-aiPointText" style="top:59.2914%;margin-top:-5.5px;left:1.3184%;width:40px;">
+			<p class="g-pstyle2">50%</p>
+		</div>
+		<div id="g-ai0-13" class="g-interactions g-aiAbs g-aiPointText" style="top:66.0494%;margin-top:-6.6px;left:82.8503%;width:94px;">
+			<p class="g-pstyle5">Conservation</p>
+		</div>
+		<div id="g-ai0-14" class="g-interactions g-aiAbs g-aiPointText" style="top:66.0263%;margin-top:-5.5px;left:1.3184%;width:40px;">
+			<p class="g-pstyle2">40%</p>
+		</div>
+		<div id="g-ai0-15" class="g-interactions g-aiAbs g-aiPointText" style="top:72.9653%;margin-top:-5.5px;left:1.3184%;width:40px;">
+			<p class="g-pstyle2">30%</p>
+		</div>
+		<div id="g-ai0-16" class="g-interactions g-aiAbs g-aiPointText" style="top:74.621%;margin-top:-6.6px;left:82.8504%;width:106px;">
+			<p class="g-pstyle5">Climate impact</p>
+		</div>
+		<div id="g-ai0-17" class="g-interactions g-aiAbs g-aiPointText" style="top:79.9043%;margin-top:-5.5px;left:1.3184%;width:40px;">
+			<p class="g-pstyle2">20%</p>
+		</div>
+		<div id="g-ai0-18" class="g-interactions g-aiAbs g-aiPointText" style="top:81.9682%;margin-top:-6.6px;left:82.8503%;width:58px;">
+			<p class="g-pstyle5">Others</p>
+		</div>
+		<div id="g-ai0-19" class="g-interactions g-aiAbs g-aiPointText" style="top:85.8585%;margin-top:-6.7px;left:82.8503%;width:52px;">
+			<p class="g-pstyle5">Waste</p>
+		</div>
+		<div id="g-ai0-20" class="g-interactions g-aiAbs g-aiPointText" style="top:86.4351%;margin-top:-5.5px;left:1.3184%;width:40px;">
+			<p class="g-pstyle2">10%</p>
+		</div>
+		<div id="g-ai0-21" class="g-interactions g-aiAbs g-aiPointText" style="top:88.9072%;margin-top:-6.6px;left:82.8504%;width:106px;">
+			<p class="g-pstyle6">Env Clearances</p>
+		</div>
+		<div id="g-ai0-22" class="g-interactions g-aiAbs g-aiPointText" style="top:91.5603%;margin-top:-6.6px;left:82.8503%;width:58px;">
+			<p class="g-pstyle7">Crimes</p>
+		</div>
+		<div id="g-ai0-23" class="g-interactions g-aiAbs g-aiPointText" style="top:93.17%;margin-top:-5.5px;left:1.703%;width:35px;">
+			<p class="g-pstyle8"><span class="g-cstyle0">0</span>%</p>
+		</div>
+		<div id="g-ai0-24" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8462%;margin-top:-6.6px;left:8.5144%;width:42px;">
+			<p class="g-pstyle5">2014</p>
+		</div>
+		<div id="g-ai0-25" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8462%;margin-top:-6.6px;left:16.0619%;width:42px;">
+			<p class="g-pstyle5">2015</p>
+		</div>
+		<div id="g-ai0-26" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8462%;margin-top:-6.6px;left:23.6093%;width:42px;">
+			<p class="g-pstyle5">2016</p>
+		</div>
+		<div id="g-ai0-27" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8462%;margin-top:-6.6px;left:31.1568%;width:42px;">
+			<p class="g-pstyle5">2017</p>
+		</div>
+		<div id="g-ai0-28" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8462%;margin-top:-6.6px;left:38.7042%;width:42px;">
+			<p class="g-pstyle5">2018</p>
+		</div>
+		<div id="g-ai0-29" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8462%;margin-top:-6.6px;left:46.2518%;width:42px;">
+			<p class="g-pstyle5">2019</p>
+		</div>
+		<div id="g-ai0-30" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8462%;margin-top:-6.6px;left:53.7992%;width:42px;">
+			<p class="g-pstyle5">2020</p>
+		</div>
+		<div id="g-ai0-31" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8462%;margin-top:-6.6px;left:61.3467%;width:42px;">
+			<p class="g-pstyle5">2021</p>
+		</div>
+		<div id="g-ai0-32" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8462%;margin-top:-6.6px;left:68.8941%;width:42px;">
+			<p class="g-pstyle5">2022</p>
+		</div>
+		<div id="g-ai0-33" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8462%;margin-top:-6.6px;left:76.4416%;width:42px;">
+			<p class="g-pstyle5">2023</p>
+		</div>
+		<div id="g-ai0-34" class="g-Layer_1 g-aiAbs" style="top:95.7171%;right:4.8996%;width:15.2564%;">
+			<p class="g-pstyle9">Source: sansad.in/ls</p>
+		</div>
+	</div>
+
+	<!-- Artboard: Artboard_4 -->
+	<div id="g-Year-wise-Artboard_4" class="g-artboard" style="max-width: 435px;max-height: 497px" data-aspect-ratio="0.875" data-min-width="0" data-max-width="779">
+<div style="padding: 0 0 114.3066% 0;"></div>
+		<img id="g-Year-wise-Artboard_4-img" class="g-Year-wise-Artboard_4-img g-aiImg" alt="" src="Year-wise-Artboard_4.png"/>
+<!-- Generator: Adobe Illustrator 27.7.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg class="g-Year-wise-Artboard_4-interactions-img g-aiImg" version="1.2" baseProfile="tiny" id="g-Year-wise-Artboard_4-interactions-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 434.701 497.234" overflow="visible" xml:space="preserve">
+<g>
+	<rect x="130.433" y="196.991" fill="#85E5E0" width="29.586" height="18.303"/>
+	<rect x="123.858" y="224.538" fill="#85E5E0" width="32.873" height="18.303"/>
+	<rect x="137.008" y="252.086" fill="#85E5E0" width="29.586" height="18.303"/>
+	<rect x="104.699" y="334.729" fill="#85E5E0" width="43.102" height="18.303"/>
+	<rect x="110.709" y="362.277" fill="#85E5E0" width="49.31" height="18.303"/>
+	<rect x="107.422" y="389.824" fill="#85E5E0" width="46.022" height="18.303"/>
+	<rect x="120.571" y="417.372" fill="#85E5E0" width="32.873" height="18.303"/>
+	<rect x="110.709" y="444.92" fill="#85E5E0" width="42.735" height="18.303"/>
+	<rect x="102.996" y="141.68" transform="matrix(0.002 -1 1 0.002 -0.1334 296.2263)" fill="#85E5E0" width="90.681" height="13"/>
+	<rect x="209.329" y="196.991" fill="#66AAAE" width="42.735" height="18.303"/>
+	<rect x="199.467" y="224.538" fill="#66AAAE" width="49.31" height="18.303"/>
+	<rect x="202.754" y="252.086" fill="#66AAAE" width="39.448" height="18.303"/>
+	<rect x="190.903" y="334.729" fill="#66AAAE" width="49.733" height="18.303"/>
+	<rect x="202.754" y="362.277" fill="#66AAAE" width="42.735" height="18.303"/>
+	<rect x="199.467" y="389.824" fill="#66AAAE" width="52.597" height="18.303"/>
+	<rect x="192.892" y="417.372" fill="#66AAAE" width="62.459" height="18.303"/>
+	<rect x="196.179" y="444.92" fill="#66AAAE" width="69.034" height="18.303"/>
+	<rect x="190.679" y="140.995" transform="matrix(0.002 -1 1 0.002 87.3779 382.5383)" fill="#66AAAE" width="89.307" height="13"/>
+	<rect x="160.019" y="196.991" fill="#5ABFBC" width="49.31" height="18.303"/>
+	<rect x="156.732" y="224.538" fill="#5ABFBC" width="42.735" height="18.303"/>
+	<rect x="166.593" y="252.086" fill="#5ABFBC" width="36.16" height="18.303"/>
+	<rect x="147.801" y="334.729" fill="#5ABFBC" width="43.102" height="18.303"/>
+	<rect x="160.019" y="362.277" fill="#5ABFBC" width="42.735" height="18.303"/>
+	<rect x="153.444" y="389.824" fill="#5ABFBC" width="46.022" height="18.303"/>
+	<rect x="153.444" y="417.372" fill="#5ABFBC" width="39.448" height="18.303"/>
+	<rect x="153.444" y="444.92" fill="#5ABFBC" width="42.735" height="18.303"/>
+	<rect x="150.778" y="147.473" transform="matrix(0.002 -1 1 0.002 34.945 342.9591)" fill="#5ABFBC" width="77.02" height="13"/>
+	<rect x="38.388" y="196.991" fill="#284BB9" width="16.437" height="18.303"/>
+	<rect x="38.388" y="224.538" fill="#284BB9" width="13.149" height="18.303"/>
+	<rect x="38.388" y="252.086" fill="#284BB9" width="9.862" height="18.303"/>
+	<rect x="38.107" y="334.702" fill="#284BB9" width="5.135" height="18.377"/>
+	<rect x="38.388" y="362.277" fill="#284BB9" width="9.862" height="18.303"/>
+	<rect x="38.388" y="389.824" fill="#284BB9" width="9.862" height="18.303"/>
+	<rect x="38.388" y="417.372" fill="#284BB9" width="16.437" height="18.303"/>
+	<rect x="38.388" y="444.92" fill="#284BB9" width="9.862" height="18.303"/>
+	<rect x="41.107" y="153.577" fill="#284BB9" width="13" height="38.906"/>
+	<rect x="54.825" y="196.991" fill="#1F77B4" width="26.299" height="18.303"/>
+	<rect x="51.537" y="224.538" fill="#1F77B4" width="16.437" height="18.303"/>
+	<rect x="48.25" y="252.086" fill="#1F77B4" width="16.437" height="18.303"/>
+	<rect x="41.704" y="334.729" fill="#1F77B4" width="9.947" height="18.303"/>
+	<rect x="48.25" y="362.277" fill="#1F77B4" width="16.437" height="18.303"/>
+	<rect x="48.25" y="389.824" fill="#1F77B4" width="16.437" height="18.303"/>
+	<rect x="54.825" y="417.372" fill="#1F77B4" width="13.149" height="18.303"/>
+	<rect x="48.25" y="444.92" fill="#1F77B4" width="9.862" height="18.303"/>
+	<rect x="29.867" y="140.967" transform="matrix(0.002 -1 1 0.002 -73.264 221.5266)" fill="#1F77B4" width="88.961" height="13"/>
+	<rect x="252.064" y="196.991" fill="#34888C" width="39.448" height="18.303"/>
+	<rect x="248.776" y="224.538" fill="#34888C" width="55.884" height="18.303"/>
+	<rect x="242.202" y="252.086" fill="#34888C" width="59.172" height="18.303"/>
+	<rect x="240.636" y="334.729" fill="#34888C" width="59.68" height="18.303"/>
+	<rect x="245.489" y="362.277" fill="#34888C" width="39.448" height="18.303"/>
+	<rect x="252.064" y="389.824" fill="#34888C" width="49.31" height="18.303"/>
+	<rect x="255.351" y="417.372" fill="#34888C" width="46.022" height="18.303"/>
+	<rect x="265.213" y="444.92" fill="#34888C" width="62.459" height="18.303"/>
+	<rect x="248.577" y="157.008" transform="matrix(0.002 -1 1 0.002 114.2486 441.488)" fill="#34888C" width="59.447" height="13"/>
+	<rect x="113.996" y="196.991" fill="#90CFFB" width="16.437" height="18.303"/>
+	<rect x="107.422" y="224.538" fill="#90CFFB" width="16.437" height="18.303"/>
+	<rect x="107.422" y="252.086" fill="#90CFFB" width="29.586" height="18.303"/>
+	<rect x="74.859" y="334.729" fill="#90CFFB" width="29.84" height="18.303"/>
+	<rect x="77.836" y="362.277" fill="#90CFFB" width="32.873" height="18.303"/>
+	<rect x="77.836" y="389.824" fill="#90CFFB" width="29.586" height="18.303"/>
+	<rect x="90.985" y="417.372" fill="#90CFFB" width="29.586" height="18.303"/>
+	<rect x="71.261" y="444.92" fill="#90CFFB" width="39.448" height="18.303"/>
+	<rect x="97.342" y="162.083" transform="matrix(0.002 -1 1 0.002 -47.4912 289.5815)" fill="#90CFFB" width="47.973" height="13"/>
+	<rect x="291.512" y="196.991" fill="#1B6C71" width="75.608" height="18.303"/>
+	<rect x="304.661" y="224.538" fill="#1B6C71" width="62.459" height="18.303"/>
+	<rect x="301.373" y="252.086" fill="#1B6C71" width="65.746" height="18.303"/>
+	<rect x="300.316" y="334.729" fill="#1B6C71" width="66.311" height="18.303"/>
+	<rect x="284.937" y="362.277" fill="#1B6C71" width="82.333" height="18.303"/>
+	<rect x="301.373" y="389.824" fill="#1B6C71" width="64.97" height="18.303"/>
+	<rect x="301.373" y="417.372" fill="#1B6C71" width="65.279" height="18.303"/>
+	<rect x="327.672" y="444.92" fill="#1B6C71" width="39.448" height="18.303"/>
+	
+		<rect x="319.165" y="149.821" transform="matrix(0.002 -1 1 0.002 184.2916 511.4348)" fill="#1B6C71" width="58.398" height="27.141"/>
+	<rect x="81.123" y="196.991" fill="#28A5F9" width="32.873" height="18.303"/>
+	<rect x="67.974" y="224.538" fill="#28A5F9" width="39.448" height="18.303"/>
+	<rect x="64.687" y="252.086" fill="#28A5F9" width="42.735" height="18.303"/>
+	<g>
+		<rect x="119.801" y="279.634" fill="#85E5E0" width="26.052" height="18.303"/>
+		<rect x="181.675" y="279.634" fill="#66AAAE" width="39.078" height="18.303"/>
+		<rect x="145.853" y="279.634" fill="#5ABFBC" width="35.822" height="18.303"/>
+		<rect x="38.388" y="279.634" fill="#284BB9" width="13.026" height="18.303"/>
+		<rect x="51.414" y="279.634" fill="#1F77B4" width="13.026" height="18.303"/>
+		<rect x="220.753" y="279.634" fill="#34888C" width="58.617" height="18.303"/>
+		<rect x="93.749" y="279.634" fill="#90CFFB" width="26.052" height="18.303"/>
+		<rect x="279.371" y="279.634" fill="#1B6C71" width="87.926" height="18.303"/>
+		<rect x="64.44" y="279.634" fill="#28A5F9" width="29.309" height="18.303"/>
+	</g>
+	<g>
+		<rect x="105.845" y="307.181" fill="#85E5E0" width="48.183" height="18.303"/>
+		<rect x="186.15" y="307.181" fill="#66AAAE" width="48.183" height="18.303"/>
+		<rect x="154.028" y="307.181" fill="#5ABFBC" width="32.122" height="18.303"/>
+		<rect x="38.388" y="307.181" fill="#284BB9" width="3.212" height="18.303"/>
+		<rect x="41.6" y="307.181" fill="#1F77B4" width="19.273" height="18.303"/>
+		<rect x="234.334" y="307.181" fill="#34888C" width="61.032" height="18.303"/>
+		<rect x="80.147" y="307.181" fill="#90CFFB" width="25.698" height="18.303"/>
+		<rect x="295.366" y="307.181" fill="#1B6C71" width="70.669" height="18.303"/>
+		<rect x="60.874" y="307.181" fill="#28A5F9" width="19.273" height="18.303"/>
+	</g>
+	<rect x="51.65" y="334.729" fill="#28A5F9" width="23.209" height="18.303"/>
+	<rect x="64.687" y="362.277" fill="#28A5F9" width="13.149" height="18.303"/>
+	<rect x="64.687" y="389.824" fill="#28A5F9" width="13.149" height="18.303"/>
+	<rect x="67.974" y="417.372" fill="#28A5F9" width="23.011" height="18.303"/>
+	<rect x="77.658" y="166.939" transform="matrix(0.002 -1 1 0.002 -76.5179 270.2097)" fill="#28A5F9" width="38.906" height="13"/>
+	<polygon fill="#28A5F9" points="71.261,444.938 71.262,463.241 58.113,463.205 58.111,444.902 	"/>
+	<path fill="none" stroke="#000000" d="M38.388,193.324V463.22"/>
+	<path fill="none" stroke="#000000" d="M38.204,463.736h327.371"/>
+	<line fill="none" stroke="#000000" x1="38.758" y1="469.777" x2="38.758" y2="463.777"/>
+	<line fill="none" stroke="#000000" x1="71.318" y1="469.777" x2="71.318" y2="463.777"/>
+	<line fill="none" stroke="#000000" x1="104.03" y1="469.777" x2="104.03" y2="463.777"/>
+	<line fill="none" stroke="#000000" x1="136.741" y1="469.777" x2="136.741" y2="463.777"/>
+	<line fill="none" stroke="#000000" x1="169.453" y1="469.777" x2="169.453" y2="463.777"/>
+	<line fill="none" stroke="#000000" x1="202.165" y1="469.777" x2="202.165" y2="463.777"/>
+	<line fill="none" stroke="#000000" x1="234.876" y1="469.777" x2="234.876" y2="463.777"/>
+	<line fill="none" stroke="#000000" x1="267.588" y1="469.777" x2="267.588" y2="463.777"/>
+	<line fill="none" stroke="#000000" x1="300.299" y1="469.777" x2="300.299" y2="463.777"/>
+	<line fill="none" stroke="#000000" x1="333.011" y1="469.777" x2="333.011" y2="463.777"/>
+	<line fill="none" stroke="#000000" x1="365.723" y1="469.777" x2="365.723" y2="463.777"/>
+</g>
+<style>
+#g-Year-wise-Artboard_4-interactions-img rect, #g-Year-wise-Artboard_4-interactions-img circle, #g-Year-wise-Artboard_4-interactions-img path, #g-Year-wise-Artboard_4-interactions-img line, #g-Year-wise-Artboard_4-interactions-img polyline, #g-Year-wise-Artboard_4-interactions-img polygon { vector-effect: non-scaling-stroke; }
+</style>
+</svg>
+
+		<div id="g-ai1-1" class="g-interactions g-aiAbs" style="top:1.6089%;left:3.8208%;width:77.2414%;">
+			<p class="g-pstyle0">A uniform trend</p>
+		</div>
+		<div id="g-ai1-2" class="g-interactions g-aiAbs" style="top:8.4467%;left:3.7436%;width:93.5632%;">
+			<p>Forest & wildlife, pollution and climate policy account for almost half of the </p>
+			<p>climate-related questions asked in Parliament</p>
+		</div>
+		<div id="g-ai1-3" class="g-Layer_1 g-aiAbs" style="top:20.7146%;right:14.3902%;width:26.8966%;">
+			<p class="g-pstyle1">Type of questions asked in Parliament</p>
+		</div>
+		<div id="g-ai1-4" class="g-interactions g-aiAbs g-aiPointText" style="transform: matrix(0.002,-1,1,0.002,0,0);transform-origin: 50% 57.5388353088419%;-webkit-transform: matrix(0.002,-1,1,0.002,0,0);-webkit-transform-origin: 50% 57.5388353088419%;-ms-transform: matrix(0.002,-1,1,0.002,0,0);-ms-transform-origin: 50% 57.5388353088419%;top:30.0929%;margin-top:-6.6px;left:17.2684%;margin-left:-53px;width:106px;">
+			<p class="g-pstyle2">Env Clearances</p>
+		</div>
+		<div id="g-ai1-5" class="g-interactions g-aiAbs g-aiPointText" style="transform: matrix(0.002,-1,1,0.002,0,0);transform-origin: 50% 57.5388353088419%;-webkit-transform: matrix(0.002,-1,1,0.002,0,0);-webkit-transform-origin: 50% 57.5388353088419%;-ms-transform: matrix(0.002,-1,1,0.002,0,0);-ms-transform-origin: 50% 57.5388353088419%;top:30.2941%;margin-top:-6.6px;left:54.0232%;margin-left:-53px;width:106px;">
+			<p class="g-pstyle3">Climate policy</p>
+		</div>
+		<div id="g-ai1-6" class="g-interactions g-aiAbs g-aiPointText" style="transform: matrix(0.002,-1,1,0.002,0,0);transform-origin: 50% 57.5388353088419%;-webkit-transform: matrix(0.002,-1,1,0.002,0,0);-webkit-transform-origin: 50% 57.5388353088419%;-ms-transform: matrix(0.002,-1,1,0.002,0,0);-ms-transform-origin: 50% 57.5388353088419%;top:30.4952%;margin-top:-6.6px;left:34.0947%;margin-left:-53px;width:106px;">
+			<p class="g-pstyle4">Climate impact</p>
+		</div>
+		<div id="g-ai1-7" class="g-interactions g-aiAbs g-aiPointText" style="transform: matrix(0.002,-1,1,0.002,0,0);transform-origin: 50% 57.5388353088419%;-webkit-transform: matrix(0.002,-1,1,0.002,0,0);-webkit-transform-origin: 50% 57.5388353088419%;-ms-transform: matrix(0.002,-1,1,0.002,0,0);-ms-transform-origin: 50% 57.5388353088419%;top:31.5007%;margin-top:-6.6px;left:43.5558%;margin-left:-47px;width:94px;">
+			<p class="g-pstyle4">Conservation</p>
+		</div>
+		<div id="g-ai1-8" class="g-interactions g-aiAbs g-aiPointText" style="transform: matrix(0.002,-1,1,0.002,0,0);transform-origin: 50% 53.9580998028681%;-webkit-transform: matrix(0.002,-1,1,0.002,0,0);-webkit-transform-origin: 50% 53.9580998028681%;-ms-transform: matrix(0.002,-1,1,0.002,0,0);-ms-transform-origin: 50% 53.9580998028681%;top:32.7074%;margin-top:-12.6px;left:79.9573%;margin-left:-41px;width:82px;">
+			<p class="g-pstyle5">Forest &</p>
+			<p class="g-pstyle5"> wildlife </p>
+		</div>
+		<div id="g-ai1-9" class="g-interactions g-aiAbs g-aiPointText" style="transform: matrix(0.002,-1,1,0.002,0,0);transform-origin: 50% 57.5388353088419%;-webkit-transform: matrix(0.002,-1,1,0.002,0,0);-webkit-transform-origin: 50% 57.5388353088419%;-ms-transform: matrix(0.002,-1,1,0.002,0,0);-ms-transform-origin: 50% 57.5388353088419%;top:33.5119%;margin-top:-6.6px;left:64.014%;margin-left:-38px;width:76px;">
+			<p class="g-pstyle5">Pollution</p>
+		</div>
+		<div id="g-ai1-10" class="g-interactions g-aiAbs g-aiPointText" style="transform: matrix(0,-1,1,0,0,0);transform-origin: 50% 57.5388353088419%;-webkit-transform: matrix(0,-1,1,0,0,0);-webkit-transform-origin: 50% 57.5388353088419%;-ms-transform: matrix(0,-1,1,0,0,0);-ms-transform-origin: 50% 57.5388353088419%;top:35.1208%;margin-top:-6.6px;left:11.1595%;margin-left:-29px;width:58px;">
+			<p class="g-pstyle6">Crimes</p>
+		</div>
+		<div id="g-ai1-11" class="g-interactions g-aiAbs g-aiPointText" style="transform: matrix(0.002,-1,1,0.002,0,0);transform-origin: 50% 57.5388353088419%;-webkit-transform: matrix(0.002,-1,1,0.002,0,0);-webkit-transform-origin: 50% 57.5388353088419%;-ms-transform: matrix(0.002,-1,1,0.002,0,0);-ms-transform-origin: 50% 57.5388353088419%;top:35.1208%;margin-top:-6.6px;left:27.9323%;margin-left:-29px;width:58px;">
+			<p class="g-pstyle4">Others</p>
+		</div>
+		<div id="g-ai1-12" class="g-interactions g-aiAbs g-aiPointText" style="transform: matrix(0.0061,-1,1,0.0061,0,0);transform-origin: 50% 57.5388353088419%;-webkit-transform: matrix(0.0061,-1,1,0.0061,0,0);-webkit-transform-origin: 50% 57.5388353088419%;-ms-transform: matrix(0.0061,-1,1,0.0061,0,0);-ms-transform-origin: 50% 57.5388353088419%;top:35.7241%;margin-top:-6.6px;left:22.4745%;margin-left:-26px;width:52px;">
+			<p class="g-pstyle4">Waste</p>
+		</div>
+		<div id="g-ai1-13" class="g-interactions g-aiAbs g-aiPointText" style="top:41.7575%;margin-top:-6.6px;right:91.9875%;width:42px;">
+			<p class="g-pstyle7">2014</p>
+		</div>
+		<div id="g-ai1-14" class="g-interactions g-aiAbs g-aiPointText" style="top:47.1875%;margin-top:-6.6px;right:91.9875%;width:42px;">
+			<p class="g-pstyle7">2015</p>
+		</div>
+		<div id="g-ai1-15" class="g-interactions g-aiAbs g-aiPointText" style="top:52.6176%;margin-top:-6.6px;right:91.9876%;width:42px;">
+			<p class="g-pstyle7">2016</p>
+		</div>
+		<div id="g-ai1-16" class="g-interactions g-aiAbs g-aiPointText" style="top:57.8465%;margin-top:-6.6px;right:91.9875%;width:42px;">
+			<p class="g-pstyle7">2017</p>
+		</div>
+		<div id="g-ai1-17" class="g-interactions g-aiAbs g-aiPointText" style="top:63.4776%;margin-top:-6.6px;right:91.9875%;width:42px;">
+			<p class="g-pstyle7">2018</p>
+		</div>
+		<div id="g-ai1-18" class="g-interactions g-aiAbs g-aiPointText" style="top:69.3099%;margin-top:-6.6px;right:91.9875%;width:42px;">
+			<p class="g-pstyle7">2019</p>
+		</div>
+		<div id="g-ai1-19" class="g-interactions g-aiAbs g-aiPointText" style="top:74.7399%;margin-top:-6.6px;right:91.9875%;width:42px;">
+			<p class="g-pstyle7">2020</p>
+		</div>
+		<div id="g-ai1-20" class="g-interactions g-aiAbs g-aiPointText" style="top:80.3711%;margin-top:-6.6px;right:91.9875%;width:42px;">
+			<p class="g-pstyle7">2021</p>
+		</div>
+		<div id="g-ai1-21" class="g-interactions g-aiAbs g-aiPointText" style="top:85.8011%;margin-top:-6.6px;right:91.9875%;width:42px;">
+			<p class="g-pstyle7">2022</p>
+		</div>
+		<div id="g-ai1-22" class="g-interactions g-aiAbs g-aiPointText" style="top:90.8289%;margin-top:-6.6px;right:91.9875%;width:42px;">
+			<p class="g-pstyle7">2023</p>
+		</div>
+		<div id="g-ai1-23" class="g-interactions g-aiAbs g-aiPointText" style="top:95.4545%;margin-top:-6.6px;right:58.8034%;width:37px;">
+			<p class="g-pstyle7">40%</p>
+		</div>
+		<div id="g-ai1-24" class="g-interactions g-aiAbs g-aiPointText" style="top:95.4545%;margin-top:-6.6px;right:66.301%;width:37px;">
+			<p class="g-pstyle7">30%</p>
+		</div>
+		<div id="g-ai1-25" class="g-interactions g-aiAbs g-aiPointText" style="top:95.6557%;margin-top:-6.6px;right:51.456%;width:37px;">
+			<p class="g-pstyle7">50%</p>
+		</div>
+		<div id="g-ai1-26" class="g-interactions g-aiAbs g-aiPointText" style="top:95.6557%;margin-top:-6.6px;right:73.872%;width:37px;">
+			<p class="g-pstyle7">20%</p>
+		</div>
+		<div id="g-ai1-27" class="g-Layer_1 g-aiAbs" style="top:94.5229%;right:1.5433%;width:16.5517%;">
+			<p class="g-pstyle8">Source: sansad.in/ls</p>
+		</div>
+		<div id="g-ai1-28" class="g-interactions g-aiAbs g-aiPointText" style="top:95.6557%;margin-top:-6.6px;right:89.3396%;width:32px;">
+			<p class="g-pstyle7">0%</p>
+		</div>
+		<div id="g-ai1-29" class="g-interactions g-aiAbs g-aiPointText" style="top:95.6557%;margin-top:-6.6px;right:81.441%;width:37px;">
+			<p class="g-pstyle7">10%</p>
+		</div>
+		<div id="g-ai1-30" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8568%;margin-top:-6.6px;right:28.7096%;width:37px;">
+			<p class="g-pstyle7">80%</p>
+		</div>
+		<div id="g-ai1-31" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8568%;margin-top:-6.6px;right:21.2011%;width:37px;">
+			<p class="g-pstyle7">90%</p>
+		</div>
+		<div id="g-ai1-32" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8568%;margin-top:-6.6px;right:36.1743%;width:37px;">
+			<p class="g-pstyle7">70%</p>
+		</div>
+		<div id="g-ai1-33" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8568%;margin-top:-6.6px;right:43.8104%;width:37px;">
+			<p class="g-pstyle7">60%</p>
+		</div>
+		<div id="g-ai1-34" class="g-interactions g-aiAbs g-aiPointText" style="top:95.8568%;margin-top:-6.6px;right:13.6216%;width:42px;">
+			<p class="g-pstyle7">100%</p>
+		</div>
+	</div>
+
+
+
+</div>
+<!-- End ai2html - 2023-07-25 17:13 -->
+
+<br><br>
+
+<section class="story-body">
+<h2 class="subhead"> Need to change </h2>
+
+			<p>
+				Why is that problematic? Because sneaky environmental hazards like extreme weather events are still not understood as climate or environmental hazards. <p>
+
+			<p>A drastic shift in the discourse is imperative if actionable change needs to be brought about. The magnitude of the environmental problem is clearly not being understood.</p>
+
+			<p>There is a gross mismatch between the actual ecological disasters and the realisation or conversation about climate change that is taking place in the parliament. While protecting the forest cover and wildlife are important issues, they are not the ones causing the maximum damage to life and property. </p>
+			
+			<p>Extreme weather events are responsible for almost a quarter of all internal displacements due to weather events globally. India in fact recorded extreme weather events on 314 or 365 days this year.  </p>
+			<p>We need to shift gears and prioritise which conversations are most urgent for us as humans and for the planet. </p>
+	</section>
+</div>
+
+<br><br>
+
+<section class="story-body">
+<h2 class="subhead"> methodology </h2>
+
+<p>The questions have been scrapped from the Lok Sabha website using playwright and then clubbed under nine classifications using the column title of debate. The nine classifications are:</p>
+
+<p> 1) Forestry and wildlife: includes everything from afforestation drives, grassland conservation, biodiversity, wild animal conservation, and incidents of human-animal conflicts.</p>
+
+<p>2) Climate policy: includes environmental schemes and policies and announcements India has made in international conferences such as the UN Conference of Parties, among others.</p>
+
+<p>3) Pollution: includes air, water, and land pollution from all sources, including stubble burning, diesel cars, and industrial effluents.</p>
+
+<p>4) Environmental clearances: include questions raised over no-objection certificates given to industries for various activities, including mining and others.</p>
+
+<p>5) Climate impact: includes the effect global warming and unplanned urbanisation have had on the environment, such as coastal erosion and land subsidence. It also includes discussions around the loss and damage caused by extreme weather events and the findings of various government assessments on climate change impacts, such as the impact of rising temperatures on farm productivity.</p>
+
+<p>6) Waste: includes discussions around the quantum and handling of all forms of waste streams, including plastic, biomedical, hazardous, and others.</p>
+
+<p>7) Conservation: includes various initiatives undertaken to conserve the environment or reduce the country’s carbon footprint. It also covers topics such as corporate social responsibility and the development of eco-sensitive beaches, among others.</p>
+
+<p>8) Crimes: include questions around poaching, illegal mining, and other environmental crimes.</p>
+
+<p>9) Others: includes topics that could not be grouped in the above classifications, such as promotion of traditional medical knowledge, compensation given to farmers, or uptake of genetically modified crops.</p>
+</script>
+
+</body>
+
+</html>
