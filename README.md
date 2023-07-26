@@ -1,5 +1,5 @@
 # Share of climate related questions asked in Indian Parliament
-Read the full story here: [Little to debate.](https://junekim6.github.io/lithium-lifecycle/)
+Read the full story here: [Little to debate.](https://rajitsengupta.github.io/Parliament_Questions/)
 
 ## Overview
 An analysis of the quuestions raised by Indian Parliamentarians to understand how often questions around climate and environment are raised. 
